@@ -47,7 +47,7 @@ n <- length(y)
 #####################
 
 # read in expenditure data
-expenditure <- read.table("https://raw.githubusercontent.com/ASDS-TCD/StatsI_Fall2022/main/datasets/expenditure.txt", header=T)
+expenditure <- read.table("https://raw.githubusercontent.com/ASDS-TCD/StatsI_Fall2023/main/datasets/expenditure.txt", header=T)
 
 # create scatterplot of Y and X1 
 pdf("plot_example.pdf")
