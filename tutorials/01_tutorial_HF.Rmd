@@ -1,0 +1,51 @@
+---
+title: "Add a Title Here"
+author: "Your Name Here"
+date: "`r Sys.Date()`"
+output: pdf_document
+#output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/Users/hannahfrank/StatsI_Fall2023_prep")
+```
+
+## Introduction
+
+Give a brief introduction of the research question(s), and how you will answer them.
+
+## Data
+
+Import the data and describe it. Include below a brief written interpretation. 
+
+```{r}
+# Load data 
+df <- read.csv("datasets/fictional_data.csv")
+```
+
+## Analysis
+
+Describe how you analysed the data. You can embed R outputs directly in your text, for example, the mean of university level education is `r round(mean(df$edu),2)` years. 
+
+Present a relevant visualization for the distribution of income. 
+
+```{r}
+
+```
+
+Include some analysis of how confident we can be about our estimate for the population mean.
+
+```{r}
+
+```
+
+Is there a relationship between education and income?
+
+```{r}
+
+```
+
+## Conclusion
+
+What is your main finding? What weaknesses might there be in your research? What further analyses are needed?
