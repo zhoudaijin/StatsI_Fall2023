@@ -90,10 +90,9 @@ result<-cat("the region of NO.4 has the highest per capita expenditure on housin
 
 #excercise 2-3
 region_car_var<-as.character(expenditure$Region)
-region_car_var
 colors <- c("red", "blue", "green", "yellow")
 for (i in 1:length(region_car_var)) {
-  points(expenditure[[i]]$X1, expenditure[[i]]$Y, col = colors[i], pch = 19)
+  points(expenditure$X1, expenditure$Y, col = colors[i], pch = 19)
 }
 legend("topright", legend = unique(expenditure$Region), col = colors, pch = 19)
 
