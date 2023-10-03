@@ -81,8 +81,6 @@
 A school counselor was curious about the average of IQ of the students in her school and took a random sample of 25 students' IQ scores. The following is the data set:\\
 \vspace{.5cm}
 
-\lstinputlisting[language=R, firstline=36, lastline=36]{PS01.R}  
-
 \vspace{1cm}
 
 \begin{enumerate}
@@ -117,7 +115,7 @@ A school counselor was curious about the average of IQ of the students in her sc
 \vspace{.5cm}
 \noindent Explore the \texttt{expenditure} data set and import data into \texttt{R}.
 \vspace{.5cm}
-\lstinputlisting[language=R, firstline=54, lastline=54]{PS01.R}  
+\lstinputlisting[language=R, firstline=54, lastline=54]{PS01_answers_daijin.R}  
 \vspace{.5cm}
 \begin{itemize}
 
@@ -127,25 +125,30 @@ Please plot the relationships among \emph{Y}, \emph{X1}, \emph{X2}, and \emph{X3
 
 \lstinputlisting[language=R, firstline=40, lastline=74]{PS01_answers_daijin.R}  
 
-\begin{figure}[H]
+
+
+\begin{figure}
 	\centering
 	\caption
-	\includegraphics[scale=0.5]{2-1.png}
+	\label{fig:2-1}
+	\includegraphics[width=.75\textwidth]{2-1.pdf}
 \end{figure}
+
 
 \item
 Please plot the relationship between \emph{Y} and \emph{Region}? On average, which region has the highest per capita expenditure on housing assistance?
 
 \lstinputlisting[language=R, firstline=77, lastline=89]{PS01_answers_daijin.R}  
+\vspace{.5cm}
 
-\begin{figure}[H]
-	\centering
-	\caption
-	\includegraphics[scale=1]{2-2.png}
+\begin{figure}
+	    \centering
+	     \caption
+	    \includegraphics[width=0.8\linewidth]{2-2.png}
+	    \label
 \end{figure}
 
 
-\vspace{.5cm}
 
 \item
 Please plot the relationship between \emph{Y} and \emph{X1}? Describe this graph and the relationship. Reproduce the above graph including one more variable \emph{Region} and display different regions with different types of symbols and colors.

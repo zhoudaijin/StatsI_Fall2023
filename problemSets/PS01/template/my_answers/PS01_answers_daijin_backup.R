@@ -26,10 +26,10 @@ all_schools_average<-100
 t_test<-t.test(y,mu=all_schools_average,alternative="greater")
 #p-value
 p_value<-t_test$p.value
-α<-0.05
+a<-0.05
 #result
 cat("p-value:", p_value)
-if (p_value < α) {
+if (p_value < a) {
   cat("reject H0")
 } else {
   cat("accept Ha")
