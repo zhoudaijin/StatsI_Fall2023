@@ -1,0 +1,102 @@
+#Question 1: Political Science
+
+#Question 1-a
+
+# create the data frame
+df_original <- data.frame(
+  'Not Stopped' = c(14,7),
+  'Bribe requested' = c(6,7),
+  'Stopped/given warning' = c(7,1),
+  row.names = c("Upper class","Lower class")
+)
+# set H0 and H1
+cat("H0:There is no significant association between the variables")
+cat("H1:There is a significant association between the variables")
+
+#Calculate the Expected Frequencies:
+result_1_1<-(27*21)/42
+result_1_1
+result_2_1<-(27*13)/42
+result_2_1
+result_3_1<-(27*8)/42
+result_3_1
+result_1_2<-(15*21)/42
+result_1_2
+result_2_2<-(15*13)/42
+result_2_2
+result_3_2<-(15*8)/42
+result_3_2
+
+#Calculate X2 test statistic
+X2_result_1_1<-(14-result_1_1)^2/result_1_1
+X2_result_1_1
+X2_result_2_1<-(6-result_2_1)^2/result_2_1
+X2_result_2_1
+X2_result_3_1<-(7-result_3_1)^2/result_3_1
+X2_result_3_1
+X2_result_1_2<-(7-result_1_2)^2/result_1_2
+X2_result_1_2
+X2_result_2_2<-(7-result_2_2)^2/result_2_2
+X2_result_2_2
+X2_result_3_2<-(1-result_3_2)^2/result_3_2
+X2_result_3_2
+X2_result<-X2_result_1_1+X2_result_2_1+X2_result_3_1+X2_result_1_2+X2_result_2_2+X2_result_3_2
+print(X2_result)
+
+#Question 1-b
+#Calculate the df
+df<-(2-1)*(3-1)
+#Calculate p_value
+p_value<-1-pchisq(X2_result,df)
+print(p_value)
+#Results
+cat("because p value is 0.15 which is  higher than 0.1, 
+    we need to accept H0. There is no significant association between the variables.")
+
+#Question 1-c
+#Calculate standardized residuals
+SR_result_1_1<-(14-result_1_1)/sqrt(result_1_1*(1-27/42)*(1-21/42))
+SR_result_1_1
+SR_result_2_1<-(6-result_2_1)/sqrt(result_2_1*(1-27/42)*(1-13/42))
+SR_result_2_1
+SR_result_3_1<-(7-result_3_1)/sqrt(result_3_1*(1-27/42)*(1-8/42))
+SR_result_3_1
+SR_result_1_2<-(7-result_1_2)/sqrt(result_1_2*(1-15/42)*(1-21/42))
+SR_result_1_2
+SR_result_2_2<-(7-result_2_2)/sqrt(result_2_2*(1-15/42)*(1-13/42))
+SR_result_2_2
+SR_result_3_2<-(1-result_3_2)/sqrt(result_3_2*(1-15/42)*(1-8/42))
+SR_result_3_2
+
+# Create the data frame of standardized residuals
+df_SR <- data.frame(
+  'Not Stopped' = c(SR_result_1_1,SR_result_1_2),
+  'Bribe requested' = c(SR_result_2_1,SR_result_2_2),
+  'Stopped/given warning' = c(SR_result_3_1,SR_result_3_2),
+  row.names = c("Upper class","Lower class")
+)
+print(df_SR)
+
+#Question 2: Economics
+
+#Question 2-b
+
+#read the dataset
+dataset <- read.csv("https://raw.githubusercontent.com/kosukeimai/qss/master/PREDICTION/women.csv")
+
+# Check the structure of the dataset
+str(dataset)
+
+# Run the bivariate regression
+model_bivariate_regression <- lm(water ~ reserved, data=dataset)
+model_bivariate_regression 
+
+# Summarize the regression results
+summary(model_bivariate_regression)
+
+#Draw a plot
+plot(model_bivariate_regression)
+
+
+
+

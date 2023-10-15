@@ -97,34 +97,53 @@
 	
 	\item [(a)]
 	Calculate the $\chi^2$ test statistic by hand/manually (even better if you can do "by hand" in \texttt{R}).\\
-	\vspace{7cm}
-	
+	\vspace{1cm}
+	\lstinputlisting[language=R, firstline=3, lastline=44]{P02_my_answers_daijin_zhou.R}
+	\noindent
+	- Results: the square of X is 3.17.
 	\item [(b)]
 	Now calculate the p-value from the test statistic you just created (in \texttt{R}).\footnote{Remember frequency should be $>$ 5 for all cells, but let's calculate the p-value here anyway.}  What do you conclude if $\alpha = 0.1$?\\
-	
-	\newpage
-	\item [(c)] Calculate the standardized residuals for each cell and put them in the table below.
 	\vspace{1cm}
-	
+	\lstinputlisting[language=R, firstline=46, lastline=54]{P02_my_answers_daijin_zhou.R}
+	\noindent
+	- Results: because p value is 0.15 which is  higher than 0.1, we need to accept H0. There is no significant association between the variables.
+	\item [(c)] Calculate the standardized residuals for each cell and put them in the table below.
 	\begin{table}[h]
 		\centering
 		\begin{tabular}{l | c c c }
 			& Not Stopped & Bribe requested & Stopped/given warning \\
 			\\[-1.8ex] 
 			\hline \\[-1.8ex]
-			Upper class  &  &  &  \\
+			Upper class  & 0.322 & -1.644 & 1.523 \\
 			\\
-			Lower class &  &   &   \\
+			Lower class & -0.322 & 1.642  & -1.523  \\
 			
 		\end{tabular}
 	\end{table}
+	\vspace{1cm}
+    \lstinputlisting[language=R, firstline=56, lastline=69]{P02_my_answers_daijin_zhou.R}  		
+	
+	\vspace{1cm}
+	\item [(d)] How might the standardized residuals help you interpret the results?\\  
+	\noindent
+	- Results:\\
+	The standardized residual between "Upper class"and "Not Stopped" is 0.322.  Because it is close to zero, it suggests that the observed and expected frequencies are close, and there may not be a strong association between  "Upper class" and "Not Stopped".\\
 	
 	
-	\vspace{7cm}
-	\item [(d)] How might the standardized residuals help you interpret the results?  
+	The standardized residual between "Upper class"and "Bribe requested" is -1.644.  Because it is negative, it suggests the observed frequency of "Upper class" individuals requesting a bribe is lower than what would be expected. It suggests that "Upper class"  might not likely to request a bribe.\\
 	
+	
+	The standardized residual between "Upper class"and "Stopped/given warningd" is 1.523.  Because it is a positive value.This suggests that the observed frequency of "upper-class" individuals being stopped is higher than expected. It suggests that "Upper class"  might be likely to be stopped.\\
+	
+	
+	The standardized residual between "Lower class"and "Not Stopped" is -0.322.  Because it is close to zero, it suggests that the observed and expected frequencies are close, and there may not be a strong association between  "Lower class" and "Not Stopped".\\
+	
+	
+	The standardized residual between "Lower class"and "Bribe requested" is 1.642.  Because it is a positive value.This suggests that the observed frequency of "Lower class" individuals being stopped is higher than expected. It suggests that "Lower class"  might be likely to request a bribe. \\
+	
+	
+	The standardized residual between "Lower class"and "Stopped/given warning" is -1.532.  Because it is negative, it suggests the observed frequency of "Lower class" individuals being stopped is lower than expected.  It suggests that "Lower class"  might not likely to be stopped.\\
 \end{enumerate}
-\newpage
 
 \section*{Question 2: Economics}
 Chattopadhyay and Duflo were interested in whether women promote different policies than men.\footnote{Chattopadhyay and Duflo. (2004). ``Women as Policy Makers: Evidence from a Randomized Policy Experiment in India. \textit{Econometrica}. 72 (5), 1409-1443.} Answering this question with observational data is pretty difficult due to potential confounding problems (e.g. the districts that choose female politicians are likely to systematically differ in other aspects too). Hence, they exploit a randomized policy experiment in India, where since the mid-1990s, $\frac{1}{3}$ of village council heads have been randomly reserved for women. A subset of the data from West Bengal can be found at the following link: \url{https://raw.githubusercontent.com/kosukeimai/qss/master/PREDICTION/women.csv}\\
@@ -140,19 +159,27 @@ Chattopadhyay and Duflo were interested in whether women promote different polic
 
 \newpage
 \begin{enumerate}
-	\item [(a)] State a null and alternative (two-tailed) hypothesis. 
-	\item 
+	\item [(a)] State a null and alternative (two-tailed) hypothesis.\\ 
+	\noindent 
 	Null Hypothesis (H0):
 	The reservation policy for women leaders in village has no effect on the number of new or repaired drinking water facilities in the villages.
 	\vspace{1cm}
-	\item 
+	\noindent\\ 
 	Alternative Hypothesis (H1):
 	The reservation policy for women leaders has a significant effect on the number of new or repaired drinking water facilities in the villages.
-	\vspace{6cm}
+	\vspace{1cm}
 	\item [(b)] Run a bivariate regression to test this hypothesis in \texttt{R} (include your code!).
-	
-	\vspace{6cm}
+	\lstinputlisting[language=R, firstline=82, lastline=95]{P02_my_answers_daijin_zhou.R}
+	\vspace{1cm}
+	\includegraphics[width=0.99\textwidth]{P02_my_answers_daijin_zhou.png}
+	\includegraphics[width=0.99\textwidth]{P02_my_answers_daijin_zhou_2b.png}
 	\item [(c)] Interpret the coefficient estimate for reservation policy. 
+	\noindent\\
+    - Results:\\
+    Coefficient Value: 
+    The positive coefficient estimate of 9.252 suggests that when the village council head's position is reserved for women, there is an increase by 9.252 on the number of new or repaired drinking water facilities compaired to situations with no reservation policy.\\
+    
+    Statistical Significance: The p-value of 0.0197 suggests statistical significance which is smaller than threshold of 0.05. This suggests that the implementation of a reservation policy has a significant impact on the number of new or repaired drinking water facilities.
 \end{enumerate}
 
 \end{document}
