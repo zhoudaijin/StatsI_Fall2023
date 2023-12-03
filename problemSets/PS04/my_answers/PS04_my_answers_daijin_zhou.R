@@ -1,0 +1,130 @@
+# Question 1: Economics
+
+# remove objects
+rm(list=ls())
+
+# set wd for current folder
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+library(ggplot2)
+library(tidyr)
+install.packages("car")
+library("car")
+data(Prestige)
+help(Prestige)
+View(Prestige)
+
+# (a)
+# Create a new variable professional by using ifelse
+Prestige$professional <- ifelse(Prestige$type == "prof", 1,
+                                ifelse(Prestige$type %in% c("bc","wc"),0, NA))
+
+# (b)
+# The regression equation is
+# y_prestige = alpha + beta_1*income + beta_2*professional + beta_3*income*professional
+
+# Run regression model with interaction term and the lm function can automatically cleans NA
+lm <- lm(prestige ~ income + professional + income * professional, data = Prestige)
+
+# Print the results
+summary(lm)
+
+# Locate the coefficients
+coefficients <- coefficients(lm)
+alpha <- coefficients[1]
+beta_1 <- coefficients[2]
+beta_2 <- coefficients[3]
+beta_3 <- coefficients[4]
+
+# Print the coefficients
+print(alpha)
+print(beta_1)
+print(beta_2)
+print(beta_3)
+
+
+# (f)
+# Calculate the marginal effect by using the prediction equation for professionals
+# And do not need to add the intercept term
+income_1000 <- 1000
+delta_y_hat <- 0.0009*income_1000
+
+# Print the result
+print(delta_y_hat)
+
+# delta_y_hat = 0.9
+
+# (g)
+# Calculate the y_hat when income is 6000 by using the prediction equation for non_professionals
+income_6000 <- 6000
+y_hat_0_6000 <- 21.1422 + 0.0031*income_6000
+print(y_hat_0_6000)
+# y_hat_0_6000 = 39.7422
+
+# Calculate the y_hat when income is 6000 by using the prediction equation for professionals
+y_hat_1_6000 <- 58.9234 + 0.0009*income_6000
+print(y_hat_1_6000)
+# y_hat_1_6000 = 64.3234
+
+# Calculate the gap
+y_hat_gap <- y_hat_1_6000 - y_hat_0_6000
+
+# Print the result
+print(y_hat_gap)
+# y_hat_gap = 24.5812
+
+
+# Question 2: Political Science
+
+# (a)
+
+# Save coefficients
+alpha <- 0.0302
+beta_1 <- 0.042
+beta_2 <- 0.042
+se_1 <- 0.016
+se_2 <- 0.013
+
+# Step1: State a null and alternative (two-tailed) hypothesis: 
+# H0: beta_1 = 0 VS. HA: beta_1 != 0
+
+# Step2: Check the standard error 
+se_1 <- 0.016
+
+# Step3: calculate Test statistic: 
+t_statistic <- (beta_1-0)/se_1
+print(t_statistic)
+
+# Step4: calculate degree of freedom
+df <- 131-2-1
+print(df)
+
+# Step5:calculate p-value when two tailed
+p_value <- 2 * (1 - pt(abs(t_statistic), df))
+print(p_value)
+
+
+
+# (b)
+# Conduct T-test to test the significance of the coefficient of Precinct adjacent to lawn signs(beta_2)
+
+# Step1: State a null and alternative (two-tailed) hypothesis. 
+# H0: beta_2 = 0 VS. HA: beta_2 != 0
+
+# Step2: Check the standard error 
+se_2 <- 0.013
+
+# Step3: calculate Test statistic: 
+t_statistic_2 <- (beta_2-0)/se_2
+print(t_statistic_2)
+
+# Step4: calculate degree of freedom 
+df <- 131-2-1
+print(df)
+
+# Step5:calculate p-value when two tailed
+p_value_2 <- 2 * (1 - pt(abs(t_statistic_2), df))
+print(p_value_2)
+
+
+
+
